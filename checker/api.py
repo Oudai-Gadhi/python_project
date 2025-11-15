@@ -54,19 +54,19 @@ def get_vulnerabilities_osv(pkg_name, version):
 import requests
 import time
 
-def get_github_severity(ghsa_id):
+def get_github_severity(ghsa_id,t,n):
     """Get severity from GitHub Security Advisories with proper authentication"""
     url = f"https://api.github.com/advisories/{ghsa_id}"
     
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "Oudai-Gadhi",  # Required by GitHub
+        "User-Agent": str(n),  # Required by GitHub
         "X-GitHub-Api-Version": "2022-11-28"
     }
     
     # Optional: Add GitHub token for higher rate limits
     # Get a token from: https://github.com/settings/tokens (no special scopes needed)
-    github_token = "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"  # Optional but recommended
+    github_token = str(t)  # Optional but recommended
     if github_token:
         headers["Authorization"] = f"Bearer {github_token}"
     
